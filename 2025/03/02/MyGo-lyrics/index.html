@@ -17,7 +17,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha256-dABdfBfUoC8vJUBOwGVdm8L9qlMWaHTIfXt+7GnZCIo=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.22.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.22.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"algolia":{"appID":"VECVXFUWQZ","apiKey":"9a07e7b748e3a6fb4b3f680d9f016c46","indexName":"your indexName","hits":{"per_page":10}}}</script><script src="/js/config.js"></script>
 
     <meta name="description" content="为 MyGo 的几首曲子填了中文歌词，希望更多人能唱出它们。">
 <meta property="og:type" content="article">
@@ -190,6 +190,7 @@ mjx-container[display="true"] + br {
 
   <div class="site-nav-right">
     <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
     </div>
   </div>
 </div>
@@ -198,11 +199,37 @@ mjx-container[display="true"] + br {
 
 <nav class="site-nav">
   <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-sitemap"><a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
   </ul>
 </nav>
 
 
 
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="搜索..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fab fa-algolia fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
 
 </header>
         
@@ -237,18 +264,18 @@ mjx-container[display="true"] + br {
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">309</span>
+          <span class="site-state-item-count">321</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-count">11</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-count">15</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -346,24 +373,50 @@ mjx-container[display="true"] + br {
     
     <div class="post-body" itemprop="articleBody"><html><head></head><body><p>为 MyGo 的几首曲子填了中文歌词，希望更多人能唱出它们。</p>
 <span id="more"></span>
-<h2 id="春日影"><a href="#春日影" class="headerlink" title="春日影"></a>春日影</h2><p>当雨落下 慢慢地 这春天 的街道 开始融化<br>我跨过 一个 一个 水洼<br>行走在云之下 和凋零的花 说话<br>这是我 唯一的 孤独的痕迹</p>
-<p>灰色的沉默 包围我 无处躲 向谁说 我 会害怕<br>我写下 一个 一个 季节<br>期待着 阳光倾斜<br>把冰冷的我 融化<br>可是我 只翻看着 过期的自说-自话</p>
-<p>（清晰的 迟疑的 默契）<br>越来越近 为什么 好像在远去<br>（秘密的 陌生的 泪滴）<br>那未曾哭泣 的我自己<br>遇见了你 和这个耀眼 的春季</p>
-<p>穿过层层云和雨 阳光啊 变透明<br>照亮我 未能传达的声音<br>眼角划过的泪滴 打湿了 这颗心<br>为什么 为什么我有了生命<br>闪耀的春季<br>到底为何 像你的手 温暖地掠过<br>请你永远 永远都 像这蓝天<br>不要离开我身边</p>
-<p>人和人的缘分 就像交错的星辰 一生 一瞬<br>流星和 许下 心愿 的人<br>细数着爱的名称 直到了日出时分<br>跳动着 那颗星 是天空的一道-刻痕</p>
-<p>（藏在人群里迷失了自己）<br>越来越近 为什么 好像在远去<br>（普通的回忆期望着奇迹）<br>那未曾哭泣 的我自己<br>遇见了你 和这个耀眼 的春季</p>
-<p>阳光明媚的世界里 绽放着我心中最为 重要的你<br>春日的暖阳也为了 为了最耀眼的你<br>和最深爱你的我 在云中偷偷地哭泣<br>啊 如此光彩夺目的你<br>啊 如此美丽又迷人的你 *</p>
-<p>穿过层层云和雨 阳光啊 变透明<br>照亮我 未能传达的声音<br>眼角划过的泪滴 打湿了 这颗心<br>为什么 为什么 我有了生命<br>闪耀的春季<br>到底为何 像你的手 温暖地掠过<br>请你永远 永远都 像这蓝天<br>不要离开我身边</p>
-<p>这样 就这样<br>永远陪在我身边</p>
+<h2 id="春日影">春日影</h2>
+<p>当雨落下 慢慢地 这春天 的街道 开始融化 我跨过 一个 一个 水洼
+行走在云之下 和凋零的花 说话 这是我 唯一的 孤独的痕迹</p>
+<p>灰色的沉默 包围我 无处躲 向谁说 我 会害怕 我写下 一个 一个 季节
+期待着 阳光倾斜 把冰冷的我 融化 可是我 只翻看着 过期的自说-自话</p>
+<p>（清晰的 迟疑的 默契） 越来越近 为什么 好像在远去 （秘密的 陌生的
+泪滴） 那未曾哭泣 的我自己 遇见了你 和这个耀眼 的春季</p>
+<p>穿过层层云和雨 阳光啊 变透明 照亮我 未能传达的声音 眼角划过的泪滴
+打湿了 这颗心 为什么 为什么我有了生命 闪耀的春季 到底为何 像你的手
+温暖地掠过 请你永远 永远都 像这蓝天 不要离开我身边</p>
+<p>人和人的缘分 就像交错的星辰 一生 一瞬 流星和 许下 心愿 的人
+细数着爱的名称 直到了日出时分 跳动着 那颗星 是天空的一道-刻痕</p>
+<p>（藏在人群里迷失了自己） 越来越近 为什么 好像在远去
+（普通的回忆期望着奇迹） 那未曾哭泣 的我自己 遇见了你 和这个耀眼
+的春季</p>
+<p>阳光明媚的世界里 绽放着我心中最为 重要的你 春日的暖阳也为了
+为了最耀眼的你 和最深爱你的我 在云中偷偷地哭泣 啊 如此光彩夺目的你 啊
+如此美丽又迷人的你 *</p>
+<p>穿过层层云和雨 阳光啊 变透明 照亮我 未能传达的声音 眼角划过的泪滴
+打湿了 这颗心 为什么 为什么 我有了生命 闪耀的春季 到底为何 像你的手
+温暖地掠过 请你永远 永远都 像这蓝天 不要离开我身边</p>
+<p>这样 就这样 永远陪在我身边</p>
 <blockquote>
-<p>参考：带 * 的段落来自 B 站 <a target="_blank" rel="noopener" href="https://space.bilibili.com/274872752">@空空Voemp</a> BV1K64y1H7Ak</p>
+<p>参考：带 * 的段落来自 B 站 <a target="_blank" rel="noopener" href="https://space.bilibili.com/274872752"><span class="citation" data-cites="空空Voemp">@空空Voemp</span></a> BV1K64y1H7Ak</p>
 </blockquote>
-<h2 id="無路矢"><a href="#無路矢" class="headerlink" title="無路矢"></a>無路矢</h2><p>还是如 风的旅途<br>我们 停在何处<br>向前吗 没有回答<br>夜空下 只有风的 嘈杂<br>我该如何出发 又会如何到达 <em><br>全世界望着它 古老的 神话<br>迷路的孩子啊 得不到回答<br>用真心去前进吧<br>风啊依然轻轻吹过 </em><br>花朵依然缓缓飘落 <em><br>漫天星光还在闪烁 </em><br>却照不出我的轮廓 *<br>哪怕大雨落下<br>我也要骑上马<br>哪怕身旁是 不见底的 悬崖<br>我这样挣扎</p>
-<p>人生啊 只有一幕<br>为何 无人起舞<br>有的人 一见如故<br>有的人 仍走在那 迷途<br>这是谁的盛夏 我可以盛开吗<br>全世界望着它 孤独的 神话<br>和我一起留下 在这星空下<br>用真心去感觉它<br>我所降生这个世界 <em><br>对我来说并无特别 </em><br>我的灵魂拼命去写<br>只是因为不想熄灭<br>可善良的你啊 *<br>在日出前到达<br>像烈火一样 点亮了 这朝霞<br>像燃烧的花</p>
-<p>向那片 无尽深海 <em><br>祷告着 我所有期待 </em><br>可即使 从未有回音 <em><br>这期待也让 你们 循声而来 </em><br>我们降生于这世界 <em><br>却在寻找何为特别 </em><br>如果故事将我拒绝<br>我会点燃漫漫长夜<br>这坚强的我们 <em><br>打碎了地平线<br>像黎明一样 擦亮了 你的脸<br>揭幕了明天 </em></p>
+<h2 id="無路矢">無路矢</h2>
+<p>还是如 风的旅途 我们 停在何处 向前吗 没有回答 夜空下 只有风的 嘈杂
+我该如何出发 又会如何到达 <em> 全世界望着它 古老的 神话 迷路的孩子啊
+得不到回答 用真心去前进吧 风啊依然轻轻吹过 </em> 花朵依然缓缓飘落 <em>
+漫天星光还在闪烁 </em> 却照不出我的轮廓 * 哪怕大雨落下 我也要骑上马
+哪怕身旁是 不见底的 悬崖 我这样挣扎</p>
+<p>人生啊 只有一幕 为何 无人起舞 有的人 一见如故 有的人 仍走在那 迷途
+这是谁的盛夏 我可以盛开吗 全世界望着它 孤独的 神话 和我一起留下
+在这星空下 用真心去感觉它 我所降生这个世界 <em> 对我来说并无特别 </em>
+我的灵魂拼命去写 只是因为不想熄灭 可善良的你啊 * 在日出前到达 像烈火一样
+点亮了 这朝霞 像燃烧的花</p>
+<p>向那片 无尽深海 <em> 祷告着 我所有期待 </em> 可即使 从未有回音 <em>
+这期待也让 你们 循声而来 </em> 我们降生于这世界 <em> 却在寻找何为特别
+</em> 如果故事将我拒绝 我会点燃漫漫长夜 这坚强的我们 <em> 打碎了地平线
+像黎明一样 擦亮了 你的脸 揭幕了明天 </em></p>
 <p>2025.2.28</p>
 <blockquote>
-<p>参考：带 * 的部分来自 B 站 <a target="_blank" rel="noopener" href="https://space.bilibili.com/274872752">@空空Voemp</a> BV1jkFfeJE36<br>（看了这首才打算自己填的，说是三创也不为过）</p>
+<p>参考：带 * 的部分来自 B 站 <a target="_blank" rel="noopener" href="https://space.bilibili.com/274872752"><span class="citation" data-cites="空空Voemp">@空空Voemp</span></a> BV1jkFfeJE36
+（看了这首才打算自己填的，说是三创也不为过）</p>
 </blockquote>
 </body></html>
     </div>
@@ -458,7 +511,8 @@ mjx-container[display="true"] + br {
   <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
 <script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script>
 
-  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/algoliasearch/4.24.0/algoliasearch-lite.umd.js" integrity="sha256-b2n6oSgG4C1stMT/yc/ChGszs9EY/Mhs6oltEjQbFCQ=" crossorigin="anonymous"></script><script src="/js/third-party/search/algolia-search.js"></script>
+
 
 
 

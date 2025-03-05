@@ -17,7 +17,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha256-dABdfBfUoC8vJUBOwGVdm8L9qlMWaHTIfXt+7GnZCIo=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.22.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":false,"version":"8.22.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"algolia":{"appID":"VECVXFUWQZ","apiKey":"9a07e7b748e3a6fb4b3f680d9f016c46","indexName":"your indexName","hits":{"per_page":10}}}</script><script src="/js/config.js"></script>
 
     <meta property="og:type" content="website">
 <meta property="og:title" content="Whisper-6&#39;s Blog!">
@@ -186,6 +186,7 @@ mjx-container[display="true"] + br {
 
   <div class="site-nav-right">
     <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
     </div>
   </div>
 </div>
@@ -194,11 +195,37 @@ mjx-container[display="true"] + br {
 
 <nav class="site-nav">
   <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-sitemap"><a href="/sitemap.xml" rel="section"><i class="fa fa-sitemap fa-fw"></i>站点地图</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
   </ul>
 </nav>
 
 
 
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="搜索..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fab fa-algolia fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
 
 </header>
         
@@ -232,18 +259,18 @@ mjx-container[display="true"] + br {
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">309</span>
+          <span class="site-state-item-count">321</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-count">11</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-count">15</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -282,6 +309,146 @@ mjx-container[display="true"] + br {
     <div class="collection-year">
       <span class="collection-header">2025</span>
     </div>
+
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+      <div class="post-meta-container">
+        <time itemprop="dateCreated"
+              datetime="2025-02-26T19:49:11Z"
+              content="2025-02-26">
+          02-26
+        </time>
+      </div>
+
+      <div class="post-title">
+          <a class="post-title-link" href="/2025/02/27/Luogu5360/" itemprop="url">
+            <span itemprop="name">Luogu5360 [SDOI2019] 世界地图</span>
+          </a>
+      </div>
+
+      
+    </header>
+  </article>
+
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+      <div class="post-meta-container">
+        <time itemprop="dateCreated"
+              datetime="2025-02-26T15:02:15Z"
+              content="2025-02-26">
+          02-26
+        </time>
+      </div>
+
+      <div class="post-title">
+          <a class="post-title-link" href="/2025/02/26/UOJ576/" itemprop="url">
+            <span itemprop="name">Uoj#576. 【ULR #1】服务器调度</span>
+          </a>
+      </div>
+
+      
+    </header>
+  </article>
+
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+      <div class="post-meta-container">
+        <time itemprop="dateCreated"
+              datetime="2025-02-26T14:56:34Z"
+              content="2025-02-26">
+          02-26
+        </time>
+      </div>
+
+      <div class="post-title">
+          <a class="post-title-link" href="/2025/02/26/CF1458F/" itemprop="url">
+            <span itemprop="name">CF1458F Range Diameter Sum</span>
+          </a>
+      </div>
+
+      
+    </header>
+  </article>
+
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+      <div class="post-meta-container">
+        <time itemprop="dateCreated"
+              datetime="2025-02-26T14:41:03Z"
+              content="2025-02-26">
+          02-26
+        </time>
+      </div>
+
+      <div class="post-title">
+          <a class="post-title-link" href="/2025/02/26/Luogu3350/" itemprop="url">
+            <span itemprop="name">Luogu3350 [ZJOI2016] 旅行者</span>
+          </a>
+      </div>
+
+      
+    </header>
+  </article>
+
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+      <div class="post-meta-container">
+        <time itemprop="dateCreated"
+              datetime="2025-02-26T14:32:35Z"
+              content="2025-02-26">
+          02-26
+        </time>
+      </div>
+
+      <div class="post-title">
+          <a class="post-title-link" href="/2025/02/26/CF802O/" itemprop="url">
+            <span itemprop="name">CF802O April Fools' Problem (hard)</span>
+          </a>
+      </div>
+
+      
+    </header>
+  </article>
+
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+      <div class="post-meta-container">
+        <time itemprop="dateCreated"
+              datetime="2025-02-26T13:31:26Z"
+              content="2025-02-26">
+          02-26
+        </time>
+      </div>
+
+      <div class="post-title">
+          <a class="post-title-link" href="/2025/02/26/CFgym102391K/" itemprop="url">
+            <span itemprop="name">CFgym102391K Wind of Change</span>
+          </a>
+      </div>
+
+      
+    </header>
+  </article>
+
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+      <div class="post-meta-container">
+        <time itemprop="dateCreated"
+              datetime="2025-02-26T13:28:49Z"
+              content="2025-02-26">
+          02-26
+        </time>
+      </div>
+
+      <div class="post-title">
+          <a class="post-title-link" href="/2025/02/26/Luogu5073/" itemprop="url">
+            <span itemprop="name">Luogu5073 [Ynoi2015] 世上最幸福的女孩</span>
+          </a>
+      </div>
+
+      
+    </header>
+  </article>
 
   <article itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
@@ -343,153 +510,13 @@ mjx-container[display="true"] + br {
     </header>
   </article>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2025-02-25T14:51:09Z"
-              content="2025-02-25">
-          02-25
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2025/02/25/AGC007E/" itemprop="url">
-            <span itemprop="name">AGC007E Shik and Travel</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2025-02-25T14:46:10Z"
-              content="2025-02-25">
-          02-25
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2025/02/25/CF793F/" itemprop="url">
-            <span itemprop="name">CF793F Julia the snail</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2025-02-25T14:43:49Z"
-              content="2025-02-25">
-          02-25
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2025/02/25/CF833D/" itemprop="url">
-            <span itemprop="name">CF833D Red-Black Cobweb</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2025-02-25T14:37:48Z"
-              content="2025-02-25">
-          02-25
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2025/02/25/Luogu6799/" itemprop="url">
-            <span itemprop="name">Luogu6799 「StOI-2」独立集</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2025-02-25T14:34:23Z"
-              content="2025-02-25">
-          02-25
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2025/02/25/Luogu6186/" itemprop="url">
-            <span itemprop="name">Luogu6186 [NOI Online #1 提高组] 冒泡排序</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2025-02-25T14:19:17Z"
-              content="2025-02-25">
-          02-25
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2025/02/25/CF269D/" itemprop="url">
-            <span itemprop="name">CF269D Maximum Waterfall</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2025-02-25T14:12:50Z"
-              content="2025-02-25">
-          02-25
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2025/02/25/Luogu4062/" itemprop="url">
-            <span itemprop="name">Luogu4062 [Code+#1] Yazid 的新生舞会</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
     </div>
   </div>
   
   
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" title="上一页" aria-label="上一页" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/page/3/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">1</a><span class="space">&hellip;</span><a class="page-number" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/page/12/">12</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/page/5/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" title="上一页" aria-label="上一页" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/page/3/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">1</a><span class="space">&hellip;</span><a class="page-number" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/page/13/">13</a><a class="extend next" rel="next" title="下一页" aria-label="下一页" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/page/5/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 </div>
@@ -553,7 +580,8 @@ mjx-container[display="true"] + br {
   <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
 <script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script>
 
-  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/algoliasearch/4.24.0/algoliasearch-lite.umd.js" integrity="sha256-b2n6oSgG4C1stMT/yc/ChGszs9EY/Mhs6oltEjQbFCQ=" crossorigin="anonymous"></script><script src="/js/third-party/search/algolia-search.js"></script>
+
 
 
 
